@@ -4,11 +4,11 @@
 @section('content')
     <br>
     <br>
-    <h1>{{ $cinema->title }}</h1><hr>
-    <p>{{ $cinema->poster }}</p>
+    <h1>{{ $film->title }}</h1><hr>
+    <p>{{ $film->poster }}</p>
 
 
-    <a href="/{{ $cinema->id }}/tickets/"><button type="button" name="button">Buy ticket</button></a>
+    <a href="/{{ $film->id }}/tickets/"><button type="button" name="button">Buy ticket</button></a>
     <br>
     <br>
     <br>

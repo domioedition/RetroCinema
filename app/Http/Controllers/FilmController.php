@@ -9,13 +9,12 @@ class FilmController extends Controller
     public function index()
     {
       $films = Film::all();
-      return view('films/index', compact('films'));
+      return view('films.index', compact('films'));
     }
 
-    public function show($id)
+    public function show(Film $film)
     {
-      $cinema = Film::find($id);
-      return view('films/show', compact('cinema'));
+      return view('films.show', compact('film'));
     }
 
 }
