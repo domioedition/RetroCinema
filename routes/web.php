@@ -1,7 +1,9 @@
 <?php
 
-Route::get('/', 'FilmController@index');
-Route::get('/films/{film}', 'FilmController@show');
+Route::get('/', 'ScheduleMovieController@index');
+Route::get('/movies/{id}', 'ScheduleMovieController@show');
+
+Route::get('/fillmovie', 'ScheduleMovieController@fill');
 
 Route::get('/{film_id}/tickets/', 'TicketController@index');
 
