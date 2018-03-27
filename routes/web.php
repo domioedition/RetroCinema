@@ -1,11 +1,11 @@
 <?php
 
-Route::get('/', 'ScheduleMovieController@index');
-Route::get('/movies/{id}', 'ScheduleMovieController@show');
+Route::get('/', 'MovieSessionController@index');
+// Route::get('/movies/{id}', 'ScheduleMovieController@show');
 
-Route::get('/fillmovie', 'ScheduleMovieController@fill');
+// Route::get('/fillmovie', 'MovieController@fill');
 
-Route::get('/{film_id}/tickets/', 'TicketController@index');
+// Route::get('/{film_id}/tickets/', 'TicketController@index');
 
 Route::post('/posts', 'PostController@store');
 Route::get('/posts', 'PostController@index');
