@@ -3,7 +3,7 @@
 
 @section('content')
 
-<h1  >Create new post</h1>
+<h1>Create new post</h1>
 <hr>
 <form class="" action="/posts" method="POST">
   @csrf

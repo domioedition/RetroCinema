@@ -7,7 +7,7 @@
 
   <section class="jumbotron text-center">
     <div class="container">
-      <h1 class="jumbotron-heading">The cinema shows movies today</h1>
+      <h1 class="jumbotron-heading">Movies at this Theatre</h1>
     </div>
   </section>
 

@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateFilmsTable extends Migration
+class CreateRentsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,14 +13,12 @@ class CreateFilmsTable extends Migration
      */
     public function up()
     {
-        Schema::create('films', function (Blueprint $table) {
+        Schema::create('rents', function (Blueprint $table) {
             $table->increments('id');
-            $table->text('title');
-            $table->text('imdbid');
-            $table->float('rating');
-            $table->integer('year');
-            $table->text('poster');
-            $table->timestamps();
+            $table->integer('movie_id');
+            $table->integer('time_start');
+            $table->integer('status');
+            $table->integer('hall')->default(1);
         });
     }
 
@@ -31,6 +29,6 @@ class CreateFilmsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('films');
+        Schema::dropIfExists('rents');
     }
 }

@@ -7,7 +7,7 @@
 
   <section class="jumbotron text-center">
     <div class="container">
-      <h1 class="jumbotron-heading">The cinema shows movies today</h1>
+      <h1 class="jumbotron-heading">Movies at this Theatre</h1>
     </div>
   </section>
 
@@ -19,14 +19,13 @@
         @foreach($movies as $movie)
           <div class="col-md-4">
             <div class="card mb-4 box-shadow">
-              <h3>{{ $movie->title }}</h3>
-              <img src="{{ $movie->poster }}" alt="{{ $movie->title }}">
+              <h3><a href="rent/{{ $movie->id }}">{{ $movie->title }}</a></h3>
+              <a href="rent/{{ $movie->id }}"><img src="{{ $movie->poster }}" alt="{{ $movie->title }}"></a>
               <div class="card-body">
-                <p class="card-text">Rating: {{ $movie->imdb_rating }}</p>
-                <p class="card-text">Year: {{ $movie->released }}</p>
+                <p class="card-text">Start time: {{ $movie->time_start  }}</p>
                 <div class="d-flex justify-content-between align-items-center">
                   <div class="btn-group">
-                    <a href="movies/{{ $movie->id }}"><button type="button" class="btn btn-sm btn-outline-secondary">Buy ticket</button></a>
+                    <a href="rent/{{ $movie->id }}"><button type="button" class="btn btn-sm btn-outline-secondary">Buy ticket</button></a>
                   </div>
                 </div>
               </div>
