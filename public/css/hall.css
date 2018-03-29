@@ -2,19 +2,25 @@
     background-color: #4CAF50; /* Green */
     border: none;
     color: white;
-    padding: 15px 32px;
+    padding: 20px 20px;
     text-align: center;
     text-decoration: none;
     display: inline-block;
     font-size: 16px;
+    margin: 5px;
+    height: 60px;
+    width: 60px;
 }
 .place_busy{
     background-color: #DC143C; /* Green */
     border: none;
     color: white;
-    padding: 15px 32px;
+    padding: 20px 20px;
     text-align: center;
     text-decoration: none;
     display: inline-block;
     font-size: 16px;
+    margin: 5px;
+    height: 60px;
+    width: 60px;
 }

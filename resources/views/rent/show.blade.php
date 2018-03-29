@@ -32,21 +32,18 @@
         <h3>Tickets</h3>
         <!-- {{ $tickets }} -->
         <p>Busy place:</p>
-        @foreach($tickets as $place)
-        <div class="place_busy">{{ $place->place_id }}</div>
-        @endforeach
+
+        @for ($i = 0; $i <= 60; $i++)
+            @if(isset($tickets[$i]))
+                {{--The current value is {{ $i }}--}}
+                <div class="place_busy">{{ $tickets[$i]->place_id }}</div>
+            @else
+                <div class="place_free">{{ $i }}</div>
+            @endif
+        @endfor
     </div>
 </div>
 
-<hr>
-<div class="row">
-    <div class="col-lg-12">
-        <form action="" method="post">
-            <input type="text" placeholder="place #">
-            <input type="submit" value="Buy ticket">
-        </form>
-    </div>
-</div>
 
 
 @endsection

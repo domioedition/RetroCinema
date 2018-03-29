@@ -3,7 +3,7 @@
 Route::get('/', 'RentController@index');
 Route::get('/rent/{id}', 'RentController@show');
 
-// Route::get('/fillmovie', 'MovieController@fill');
+ Route::get('/fillmovie', 'MovieController@fill');
 
 // Route::get('/{film_id}/tickets/', 'TicketController@index');
 

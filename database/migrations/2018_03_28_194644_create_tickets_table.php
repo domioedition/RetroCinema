@@ -18,6 +18,7 @@ class CreateTicketsTable extends Migration
             $table->integer('rent_id');
             $table->integer('place_id');
             $table->integer('price_id');
+            $table->string('hashed_ticket_id');
         });
     }
 
