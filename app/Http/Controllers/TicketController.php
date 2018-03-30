@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Ticket;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Http\Request;
 
 class TicketController extends Controller
 {
@@ -17,16 +18,15 @@ class TicketController extends Controller
       return view('ticket.create');
     }
 
-    public function store()
+    public function store(Request $request)
     {
-        //hash didn't work. need to fix it
-        //$hashedTicketId = Hash::make(str_random(8));
+        $sessionId = $request->session()->getId();
         $this->validate(request(),[
         'rent_id' => 'required',
         'place_id' => 'required',
         'price_id' => 'required',
         ]);
-      Ticket::create(request(['rent_id', 'place_id', 'price_id']));
+      Ticket::create(request(['rent_id', 'place_id', 'price_id'], $sessionId));
       return redirect('/tickets');
     }
 }
