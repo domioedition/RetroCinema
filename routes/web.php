@@ -14,5 +14,4 @@ Route::get('/posts/{post_id}', 'PostController@show');
 //show Ticket buying form
 Route::post('/tickets', 'TicketController@store');
 Route::get('/tickets/{rent_id}/create', 'TicketController@create');
-Route::get('/tickets', 'TicketController@index');
-
+Route::get('/tickets', 'TicketController@index')->name('tickets');

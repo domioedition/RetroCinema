@@ -27,6 +27,6 @@ class TicketController extends Controller
         'price_id' => 'required',
         ]);
       Ticket::create(request(['rent_id', 'place_id', 'price_id'], $sessionId));
-      return redirect('/tickets');
+      return redirect(route('tickets'));
     }
 }

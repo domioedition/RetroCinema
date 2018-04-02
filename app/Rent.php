@@ -10,4 +10,9 @@ class Rent extends Model
   {
     return $this->hasMany('App\Ticket');
   }
+
+  public function movie()
+  {
+    return $this->belongsTo(Movie::classs);
+  }
 }

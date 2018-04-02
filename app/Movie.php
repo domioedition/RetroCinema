@@ -8,4 +8,9 @@ class Movie extends Model
   {
     return $this->belongsTo(MovieSession::class);
   }
+
+  public function rents()
+  {
+    return $this->hasMany(Rent::class);
+  }
 }
