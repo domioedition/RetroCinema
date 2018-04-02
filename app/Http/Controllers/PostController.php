@@ -8,30 +8,30 @@ use App\Post;
 
 class PostController extends Controller
 {
-      public function index()
-      {
+    public function index()
+    {
         $posts = Post::latest()->get();
         return view('posts.index', compact('posts'));
-      }
+    }
 
-      public function show($id)
-      {
+    public function show($id)
+    {
         $post = Post::find($id);
         return view('posts.show', compact('post'));
-      }
+    }
 
-      public function create()
-      {
+    public function create()
+    {
         return view('posts.create');
-      }
+    }
 
-      public function store()
-      {
-        $this->validate(request(),[
-          'title' => 'required',
-          'body' => 'required',
+    public function store()
+    {
+        $this->validate(request(), [
+            'title' => 'required',
+            'body' => 'required',
         ]);
         Post::create(request(['title', 'body', 'user_id']));
         return redirect('/posts');
-      }
+    }
 }
