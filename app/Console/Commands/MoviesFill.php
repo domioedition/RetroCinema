@@ -84,5 +84,38 @@ class MoviesFill extends Command
             Movie::create($preparedArr);
 //            sleep(5);
         }
+
+/**
+ * 
+ * Fill movies table with random movies
+ * 
+ */
+
+        // for($i=0; $i<100; $i++)
+        // {
+        //      $imdbId = $this->generateRandomIdImdb();
+        //     $res = $client->request('GET', 'http://www.omdbapi.com/?apikey=150f2314&i=' . $imdbId);
+        //     $resultFromApi = json_decode($res->getBody());
+
+        //     $preparedArr['imdb_id'] = $imdbId;
+        //     $preparedArr['title'] = $resultFromApi->Title;
+        //     $preparedArr['description'] = $resultFromApi->Plot;
+        //     $preparedArr['released'] = $resultFromApi->Released;
+        //     $preparedArr['poster'] = $resultFromApi->Poster;
+        //     $preparedArr['imdb_rating'] = $resultFromApi->imdbRating;
+        //     Movie::create($preparedArr);
+        // }
+    }
+
+
+    public function generateRandomIdImdb()
+    {
+        $imdbId = 'tt';
+        for($i=0; $i<7; $i++)
+        {
+           $imdbId .= random_int(0,9);
+        }
+
+        return $imdbId;
     }
 }

@@ -12,6 +12,9 @@ class RentController extends Controller
 {
     public function index()
     {
+
+        //TODO: implement relations
+
         $movies = DB::table('rents')->
                     join('movies', 'movies.id', '=', 'rents.movie_id')->
                     select('rents.*', 'movies.*')->get();
@@ -23,12 +26,17 @@ class RentController extends Controller
         $tickets = Rent::find($id)->getTickets;
 
         // dd($tickets);
-        
+
         $rentMovie = DB::table('rents')->
                         where('movie_id',$id)->
                         join('movies', 'movies.id', '=', 'rents.movie_id')->
                         select('rents.*', 'movies.*')->get();
         // dd($rentMovie);
         return view('rent.show', compact(['rentMovie', 'tickets']));
+    }
+
+    public function create()
+    {
+
     }
 }

@@ -3,42 +3,29 @@
 
 @section('content')
 
-<main role="main">
+<div class="card-deck mb-3 text-center">
+@foreach($movies as $movie)
 
-  <section class="jumbotron text-center">
-    <div class="container">
-      <h1 class="jumbotron-heading">Movies at this Theatre</h1>
-    </div>
-  </section>
-
-  <div class="album py-5 bg-light">
-    <div class="container">
-
-      <div class="row">
-
-        @foreach($movies as $movie)
-          <div class="col-md-4">
-            <div class="card mb-4 box-shadow">
-              <h3><a href="rent/{{ $movie->id }}">{{ $movie->title }}</a></h3>
-              <a href="rent/{{ $movie->id }}"><img src="{{ $movie->poster }}" alt="{{ $movie->title }}"></a>
-              <div class="card-body">
-                <p class="card-text">Start time: {{ $movie->time_start  }}</p>
-                <div class="d-flex justify-content-between align-items-center">
-                  <div class="btn-group">
-                    <a href="rent/{{ $movie->id }}"><button type="button" class="btn btn-sm btn-outline-secondary">Buy ticket</button></a>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-
-        @endforeach
-
+    <div class="card mb-4 box-shadow">
+      <div class="card-header">
+        <h4 class="my-0 font-weight-normal">{{ $movie->title }}</h4>
+      </div>
+      <div class="card-body">
+        <a href="rent/{{ $movie->id }}"><img src="{{ $movie->poster }}" alt="{{ $movie->title }}" class="img-fluid"></a>
+        <h5 class="card-title pricing-card-title">Start: {{ $movie->dtg  }}</h5>
+      </div>
+      <div class="card-footer">
+        <a href="rent/{{ $movie->id }}"><button type="button" class="btn btn-lg btn-block btn-outline-primary">Buy ticket</button></a>
       </div>
     </div>
-  </div>
 
-</main>
+@endforeach
+</div>
+
+
+
+
+
 @endsection
 
 

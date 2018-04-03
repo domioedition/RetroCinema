@@ -18,11 +18,11 @@
         <p>{{ $rentMovie[0]->description }}</p>
         <p>Imdb rating: {{ $rentMovie[0]->imdb_rating }}</p>
         <p>Year of released: {{ $rentMovie[0]->released }}</p>
-        <p>Time start: {{ $rentMovie[0]->time_start }}</p>
+        <p>Time start: {{ $rentMovie[0]->dtg }}</p>
         <p><a href="/tickets/{{ $rentMovie[0]->id }}/create"><button type="button" name="button" class="btn btn-success">Buy ticket</button></a></p>
     </div>
 </div>
-<hr>    
+<hr>
 
 
 
