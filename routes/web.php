@@ -1,6 +1,6 @@
 <?php
 
-Route::get('/', 'RentController@index');
+Route::get('/', 'RentController@index')->name('home');
 Route::get('/rent/{id}', 'RentController@show');
 
 // Route::get('/{film_id}/tickets/', 'TicketController@index');
@@ -16,3 +16,14 @@ Route::get('/posts/{post_id}', 'PostController@show');
 Route::post('/tickets', 'TicketController@store');
 Route::get('/tickets/{rent_id}/create', 'TicketController@create');
 Route::get('/tickets', 'TicketController@index')->name('tickets');
+
+
+Route::post('/login', 'SessionsController@store');
+Route::post('/register', 'RegistrationController@store');
+Route::get('/register', 'RegistrationController@create');
+
+Route::get('/login', 'SessionsController@create');
+Route::get('/logout', 'SessionsController@destroy');
+
+
+Route::get('/home', 'UserController@show');

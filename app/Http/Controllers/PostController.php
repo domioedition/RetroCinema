@@ -5,13 +5,20 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 
 use App\Post;
+use Illuminate\Support\Facades\Auth;
 
 class PostController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth')->except('index', 'show');
+    }
+
     public function index()
     {
+        $isAuthenticated = Auth::check();
         $posts = Post::latest()->get();
-        return view('posts.index', compact('posts'));
+        return view('posts.index', compact('posts','isAuthenticated'));
     }
 
     public function show($id)
@@ -31,7 +38,11 @@ class PostController extends Controller
             'title' => 'required',
             'body' => 'required',
         ]);
-        Post::create(request(['title', 'body', 'user_id']));
+
+        auth()->user()->publish(
+            new Post(request(['title', 'body']))
+        );
+
         return redirect('/posts');
     }
 }
