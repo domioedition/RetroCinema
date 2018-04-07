@@ -25,6 +25,27 @@
 <hr>
 
 
+<div class="row">
+    <div class="col-lg-9">
+    <h1>qqweqwe</h1>
+    <div class="place free">1</div>
+    <div class="place free">2</div>
+    </div>
+    <div class="col-lg-3 booking">
+    <h3>Booked</h3>
+    <ul class="tickets_list"></ul>
+    <form class="" action="" method="post">
+
+        <div class="form-group">
+            <h4>Total price:</h4><p id="total-sum"></p>
+            <button type="submit" class="btn btn-success" id="buy_tickets">Buy tickets</button>
+            <button type="reset" class="btn btn-danger" id="reset">Reset</button>
+        </div>
+    </form>
+    
+    
+    </div>
+</div>    
 
 
 <div class="row">
