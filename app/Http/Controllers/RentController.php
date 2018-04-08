@@ -7,6 +7,8 @@ use App\Rent;
 use App\Movie;
 use Illuminate\Support\Facades\DB;
 use App\Ticket;
+use Ramsey\Uuid\Uuid;
+use Ramsey\Uuid\Exception\UnsatisfiedDependencyException;
 
 
 class RentController extends Controller
@@ -24,9 +26,10 @@ class RentController extends Controller
 
     public function show($id)
     {
+        // dd($)
         $tickets = Rent::find($id)->getTickets;
 
-        // dd($tickets);
+        dd($tickets);
 
         $rentMovie = DB::table('rents')->
                         where('movie_id',$id)->
@@ -36,23 +39,21 @@ class RentController extends Controller
         return view('rent.show', compact(['rentMovie', 'tickets']));
     }
 
-    public function create()
-    {
-
-    }
-
     public function buy(Request $request)
     {
       $allInputs = $request->all();
       unset($allInputs["_token"]);
-      $rent_id = 1;
-      $price_id = 1;
-      $hashed_ticket_id = 1;
-      foreach ($allInputs as $key => $value) {
-          Ticket::store();                  
-
+      foreach ($allInputs as $key => $place_id) {
+            $ticket = new Ticket;            
+            $ticket->rent_id = 1;
+            $ticket->place_id = (int)$place_id;
+            $ticket->price_id = 1;
+            $ticket->hashed_ticket_id = Uuid::uuid1()->toString();
+            $ticket->save();
+            // Ticket::store($arr);
       }
-      dd($allInputs);
+      return redirect()->route('home');
+    //   dd($allInputs);
     }
 
 }
