@@ -1,19 +1,20 @@
-var places = $( ".place" );
+
 var ticketsList = $('ul.tickets_list');
 var totalSum = 0;
 var price = 140; // must be changed to another one
 
-var postJson = {};
-console.log(postJson);
+
+
+var form = $("pay");
 
 var totalSumElement = $("#total-sum");
-// console.log(ticketsList);
-places.each(function( index ) {
+$( ".place" ).each(function( index ) {
     $( this ).on( "click", function() {
       $(".booking").css("visibility", "visible");
       if($( this ).hasClass("free")){
           $( this ).removeClass("free").addClass("booked");
           var li = $('<li/>')
+          .addClass('list-group-item')
           .addClass('ul-li-ticket')
           .attr('role', 'menuitem')
           .val($(this).text())
@@ -21,32 +22,19 @@ places.each(function( index ) {
           .appendTo(ticketsList);
           totalSum += price;
           totalSumElement.text(totalSum);
-        }else{
-          // $( this ).removeClass("booked").addClass("booked");
-        }
-        console.log(totalSum);
-      });      
-  });
 
+
+          var input = $("<input type='text' value='' />")
+                      .attr("id", $(this).text())
+                      .attr("value", $(this).text())
+                      .attr("name", $(this).text())
+                      .css("visibility", "hidden")
+                      .prependTo("form")
+        }
+      });
+
+  });
 
 $("#reset").on("click", function(){
   location.reload();
-});
-
-
-$(document).ready(function() {
-  $('#buy_tickets').on('submit', function (e) {
-      e.preventDefault();
-      var title = $('#title').val();
-      var body = $('#body').val();
-      var published_at = $('#published_at').val();
-      $.ajax({
-          type: "POST",
-          url: host + '/articles/create',
-          data: {title: title, body: body, published_at: published_at},
-          success: function( msg ) {
-              $("#ajaxResponse").append("<div>"+msg+"</div>");
-          }
-      });
-  });
 });

@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Rent;
 use App\Movie;
 use Illuminate\Support\Facades\DB;
+use App\Ticket;
 
 
 class RentController extends Controller
@@ -39,4 +40,19 @@ class RentController extends Controller
     {
 
     }
+
+    public function buy(Request $request)
+    {
+      $allInputs = $request->all();
+      unset($allInputs["_token"]);
+      $rent_id = 1;
+      $price_id = 1;
+      $hashed_ticket_id = 1;
+      foreach ($allInputs as $key => $value) {
+          Ticket::store();                  
+
+      }
+      dd($allInputs);
+    }
+
 }

@@ -26,44 +26,47 @@
 
 
 <div class="row">
-    <div class="col-lg-9">
-    <h1>qqweqwe</h1>
-    <div class="place free">1</div>
-    <div class="place free">2</div>
+    <div class="col-lg-8">
+    <h1>Ticketss</h1>
+    <hr>
+    <h4>Please choose your seats</h4>
+    <div class="bg-info">
+      <p class="text-center">Screen here</p>
+    </div>
+      <div class="place free">1</div>
+      <div class="place free">2</div>
+      <div class="place free">3</div>
+      <div class="place free">4</div>
+      <div class="place free">5</div>
+      <div class="place free">6</div>
+      <div class="place free">7</div>
+      <div class="place free">8</div>
+      <div class="place free">9</div>
     </div>
     <div class="col-lg-3 booking">
-    <h3>Booked</h3>
-    <ul class="tickets_list"></ul>
-    <form class="" action="" method="post">
+    <h3>Reserved</h3>
+    <p>These are your reserved seats</p>
+    <ul class="list-group tickets_list"></ul>
+
 
         <div class="form-group">
             <h4>Total price:</h4><p id="total-sum"></p>
-            <button type="submit" class="btn btn-success" id="buy_tickets">Buy tickets</button>
-            <button type="reset" class="btn btn-danger" id="reset">Reset</button>
+            <form id="pay" class="" action="/rent/1/buy" method="POST">
+                @csrf
+                <button type="submit" class="btn btn-primary" id="buy">Add to cart</button>
+                <button type="reset" class="btn btn-danger" id="reset">Reset</button>
+            </form>
+
+
         </div>
-    </form>
-    
-    
-    </div>
-</div>    
 
 
-<div class="row">
-    <div class="col-lg-12">
-        <h3>Tickets</h3>
-        <!-- {{ $tickets }} -->
-        <p>Busy place:</p>
 
-        @for ($i = 0; $i <= 60; $i++)
-            @if(isset($tickets[$i]))
-                {{--The current value is {{ $i }}--}}
-                <div class="place_busy">{{ $tickets[$i]->place_id }}</div>
-            @else
-                <div class="place_free">{{ $i }}</div>
-            @endif
-        @endfor
     </div>
 </div>
+
+
+
 
 
 

@@ -25,8 +25,6 @@ html {
 .box-shadow { box-shadow: 0 .25rem .75rem rgba(0, 0, 0, .05); }
 
 .place{
-  border:1px solid #1a1;
-  background-color: #333;
   color: #fff;
   padding: 20px 20px;
   text-align: center;
@@ -38,20 +36,21 @@ html {
   width: 60px;
 }
 
+.free{
+  background-color: #4CAF50;
+}
+
 .booked{
   background-color: #DC143C;
 }
 
 .booking{
-  /* visibility: hidden; */
+  visibility: hidden;
 }
 
-ul{
-  list-style: none;
-}
 .ul-li-ticket{
-  background-color: #3B7A57;
-  color: #fff;
+  background-color: 	#ADD8E6;
+  color: #666;
   margin: 10px;
   padding: 12px;
 }
