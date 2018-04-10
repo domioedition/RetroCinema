@@ -85,11 +85,11 @@ class MoviesFill extends Command
 //            sleep(5);
         }
 
-/**
- * 
- * Fill movies table with random movies
- * 
- */
+        /**
+         *
+         * Fill movies table with random movies
+         *
+         */
 
         // for($i=0; $i<100; $i++)
         // {
@@ -111,9 +111,8 @@ class MoviesFill extends Command
     public function generateRandomIdImdb()
     {
         $imdbId = 'tt';
-        for($i=0; $i<7; $i++)
-        {
-           $imdbId .= random_int(0,9);
+        for ($i=0; $i<7; $i++) {
+            $imdbId .= random_int(0, 9);
         }
 
         return $imdbId;

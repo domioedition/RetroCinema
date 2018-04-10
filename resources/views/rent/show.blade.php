@@ -3,7 +3,7 @@
 
 @section('content')
 
-<!-- {{ $rentMovie }} -->
+ <!--{{ $rentMovie }}--> 
 
 <div class="row">
     <div class="col-lg-12">
@@ -11,24 +11,31 @@
     </div>
 </div>
 <div class="row">
-    <div class="col-lg-4"><img src="{{ $rentMovie[0]->poster }}" alt="{{ $rentMovie[0]->title }}"></div>
+    <div class="col-lg-4"><img src="{{ $rentMovie->movie->poster }}" alt="{{ $rentMovie->movie->title }}"></div>
     <div class="col-lg-8">
-        <h1>{{ $rentMovie[0]->title }}</h1>
+        <h1>{{ $rentMovie->movie->title }}</h1>
         <h4>Description:</h4>
-        <p>{{ $rentMovie[0]->description }}</p>
-        <p>Imdb rating: {{ $rentMovie[0]->imdb_rating }}</p>
-        <p>Year of released: {{ $rentMovie[0]->released }}</p>
-        <p>Time start: {{ $rentMovie[0]->dtg }}</p>
-        <p><a href="/tickets/{{ $rentMovie[0]->id }}/create"><button type="button" name="button" class="btn btn-success">Buy ticket</button></a></p>
+        <p>{{ $rentMovie->movie->description }}</p>
+        <p>Imdb rating: {{ $rentMovie->movie->imdb_rating }}</p>
+        <p>Year of released: {{ $rentMovie->movie->released }}</p>
+        <p>Time start: {{ $rentMovie->dtg }}</p>
     </div>
 </div>
 <hr>
 
 
+
 <div class="row">
     <div class="col-lg-8">
-    <h1>Ticketss</h1>
+    <h1>Tickets</h1>
     <hr>
+    Booked:
+    <ul>
+    
+    @foreach($rentMovie->tickets as $ticket)
+        <li>{{ $ticket->place_id }}</li>
+    @endforeach
+    </ul>
     <h4>Please choose your seats</h4>
     <div class="bg-info">
       <p class="text-center">Screen here</p>

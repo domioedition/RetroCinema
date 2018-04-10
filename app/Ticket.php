@@ -2,17 +2,12 @@
 
 namespace App;
 
-
 class Ticket extends Model
 {
     public $timestamps = false;
-
-
-
-    //TODO: remove this method
-    public static function store()
+    
+    public function rent()
     {
-
-        dd("test");
+        return $this->belongsTo('App\Rent');
     }
 }

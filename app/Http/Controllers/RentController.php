@@ -10,7 +10,6 @@ use App\Ticket;
 use Ramsey\Uuid\Uuid;
 use Ramsey\Uuid\Exception\UnsatisfiedDependencyException;
 
-
 class RentController extends Controller
 {
     public function index()
@@ -24,36 +23,37 @@ class RentController extends Controller
         return view('rent.index', compact('movies'));
     }
 
+    /**
+     * This method get all information about today's rent film
+     * Also we show all tickets for this film
+     * @param type $id - movie id
+     * @return view rent movie
+     */
     public function show($id)
     {
-        // dd($)
-        $tickets = Rent::find($id)->getTickets;
-
-        dd($tickets);
-
-        $rentMovie = DB::table('rents')->
-                        where('movie_id',$id)->
-                        join('movies', 'movies.id', '=', 'rents.movie_id')->
-                        select('rents.*', 'movies.*')->get();
-        // dd($rentMovie);
-        return view('rent.show', compact(['rentMovie', 'tickets']));
+        $rentMovie = Rent::where('id', '=', $id)->first();
+         
+        return view('rent.show', compact(['rentMovie']));
     }
-
+    /**
+     * Buy ticket method
+     * @param Request $request
+     * @return redirect to home page
+     *
+     */
     public function buy(Request $request)
     {
-      $allInputs = $request->all();
-      unset($allInputs["_token"]);
-      foreach ($allInputs as $key => $place_id) {
-            $ticket = new Ticket;            
+        $allInputs = $request->all();
+        unset($allInputs["_token"]);
+        foreach ($allInputs as $key => $place_id) {
+            $ticket = new Ticket;
             $ticket->rent_id = 1;
             $ticket->place_id = (int)$place_id;
             $ticket->price_id = 1;
             $ticket->hashed_ticket_id = Uuid::uuid1()->toString();
             $ticket->save();
             // Ticket::store($arr);
-      }
-      return redirect()->route('home');
-    //   dd($allInputs);
+        }
+        return redirect()->route('home');
     }
-
 }

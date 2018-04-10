@@ -15,18 +15,18 @@ class TicketController extends Controller
 
     public function create()
     {
-      return view('ticket.create');
+        return view('ticket.create');
     }
 
     public function store(Request $request)
     {
         $sessionId = $request->session()->getId();
-        $this->validate(request(),[
+        $this->validate(request(), [
         'rent_id' => 'required',
         'place_id' => 'required',
         'price_id' => 'required',
         ]);
-      Ticket::create(request(['rent_id', 'place_id', 'price_id'], $sessionId));
-      return redirect(route('tickets'));
+        Ticket::create(request(['rent_id', 'place_id', 'price_id'], $sessionId));
+        return redirect(route('tickets'));
     }
 }

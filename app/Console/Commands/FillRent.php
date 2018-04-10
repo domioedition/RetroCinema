@@ -40,17 +40,16 @@ class FillRent extends Command
      */
     public function handle()
     {
+        for ($i=1; $i <= 3; $i++) {
+            $dtg = Carbon::createFromTime(20, 00, 00, 'Europe/Kiev')->addDays($i);
 
-      for ($i=1; $i <= 3; $i++) {
-          $dtg = Carbon::createFromTime(20, 00, 00, 'Europe/Kiev')->addDays($i);
-
-          //TODO: nned to find method for random films
-          $movie = Movie::find($i);
-          $rentArr['movie_id'] = $movie->id;
-          $rentArr['dtg'] = $dtg;
-          $rentArr['status'] = 1;
-          $rentArr['hall'] = 1;
-          $rent = Rent::create($rentArr);
-      }
+            //TODO: nned to find method for random films
+            $movie = Movie::find($i);
+            $rentArr['movie_id'] = $movie->id;
+            $rentArr['dtg'] = $dtg;
+            $rentArr['status'] = 1;
+            $rentArr['hall'] = 1;
+            $rent = Rent::create($rentArr);
+        }
     }
 }

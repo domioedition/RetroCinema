@@ -8,7 +8,7 @@ use App\Movie;
 
 class FillMovies extends Command
 {
-  protected $moviesImdbIds = [
+    protected $moviesImdbIds = [
       'tt0094226',
       'tt0107529',
       'tt0120789',
@@ -68,27 +68,27 @@ class FillMovies extends Command
      */
     public function handle()
     {
-      $client = new Client();
+        $client = new Client();
 
-      foreach ($this->moviesImdbIds as $imdbId) {
-          $res = $client->request('GET', 'http://www.omdbapi.com/?apikey=150f2314&i=' . $imdbId);
-          $resultFromApi = json_decode($res->getBody());
+        foreach ($this->moviesImdbIds as $imdbId) {
+            $res = $client->request('GET', 'http://www.omdbapi.com/?apikey=150f2314&i=' . $imdbId);
+            $resultFromApi = json_decode($res->getBody());
 
-          $preparedArr['imdb_id'] = $imdbId;
-          $preparedArr['title'] = $resultFromApi->Title;
-          $preparedArr['description'] = $resultFromApi->Plot;
-          $preparedArr['released'] = $resultFromApi->Released;
-          $preparedArr['poster'] = $resultFromApi->Poster;
-          $preparedArr['imdb_rating'] = $resultFromApi->imdbRating;
-          Movie::create($preparedArr);
-  //            sleep(5);
-      }
+            $preparedArr['imdb_id'] = $imdbId;
+            $preparedArr['title'] = $resultFromApi->Title;
+            $preparedArr['description'] = $resultFromApi->Plot;
+            $preparedArr['released'] = $resultFromApi->Released;
+            $preparedArr['poster'] = $resultFromApi->Poster;
+            $preparedArr['imdb_rating'] = $resultFromApi->imdbRating;
+            Movie::create($preparedArr);
+            //            sleep(5);
+        }
 
-  /**
-  *
-  * Fill movies table with random movies
-  *
-  */
+        /**
+        *
+        * Fill movies table with random movies
+        *
+        */
 
       // for($i=0; $i<100; $i++)
       // {
@@ -104,17 +104,16 @@ class FillMovies extends Command
       //     $preparedArr['imdb_rating'] = $resultFromApi->imdbRating;
       //     Movie::create($preparedArr);
       // }
-  }
+    }
 
 
-  public function generateRandomIdImdb()
-  {
-      $imdbId = 'tt';
-      for($i=0; $i<7; $i++)
-      {
-         $imdbId .= random_int(0,9);
-      }
+    public function generateRandomIdImdb()
+    {
+        $imdbId = 'tt';
+        for ($i=0; $i<7; $i++) {
+            $imdbId .= random_int(0, 9);
+        }
 
-      return $imdbId;
-  }
+        return $imdbId;
+    }
 }
