@@ -9,15 +9,27 @@ use App\Movie;
 
 class MovieController extends Controller
 {
+    /**
+     *
+     * Show all movies
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     */
     public function index()
     {
-        // $movies = Movie::all();
+        $movies = Movie::all();
 
-      // return view('movie.index', compact('movies'));
+        return view('movie.index', compact('movies'));
     }
 
-    public function show(Movie $movie)
+    /**
+     * Search movie in DB via $id
+     * @param Movie $movie
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     */
+    public function show($id)
     {
-        // return view('movie.show', compact('movie'));
+        $movie = Movie::find($id);
+
+        return view('movie.show', compact('movie'));
     }
 }

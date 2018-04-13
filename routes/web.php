@@ -2,9 +2,8 @@
 
 Route::get('/', 'RentController@index')->name('home');
 Route::get('/rent/{id}', 'RentController@show');
-Route::post('/rent/{id}/buy', 'RentController@buy');
+Route::post('/rent/{id}/buy', 'RentController@buy')->name('buy');
 
-// Route::get('/{film_id}/tickets/', 'TicketController@index');
 
 Route::post('/posts', 'PostController@store');
 Route::post('/posts/{post}/comments', 'CommentsController@store');
@@ -28,3 +27,15 @@ Route::get('/logout', 'SessionsController@destroy');
 
 
 Route::get('/home', 'UserController@show');
+
+/**
+ * Movies
+ */
+Route::get('/movies', 'MovieController@index');
+Route::get('/movies/{id}', 'MovieController@show');
+
+/**
+ *
+ */
+Route::get('/voting', 'VotingController@index');
+Route::post('/voting', 'VotingController@store');

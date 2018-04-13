@@ -26,10 +26,7 @@
 
     @include('layouts.nav')
 
-    <div class="pricing-header px-3 py-3 pt-md-5 pb-md-4 mx-auto text-center">
-      <h1 class="display-8">Movies at this Theatre</h1>
-      <p class="lead">Just choose your movie and enjoy watching.</p>
-    </div>
+
 
     <div class="container">
       @yield('content')
