@@ -36,14 +36,14 @@ class FillRent extends Command
     }
 
     /**
-     * Execute the console command.
+     * Here method which calculate votes and create rent movie
      *
      * @return mixed
      */
     public function handle()
     {
         
-        //TODO: here method which calculate votes and create rent movie
+        //here method which calculate votes and create rent movie
         
         
         $votings = DB::table('movies')
@@ -55,27 +55,27 @@ class FillRent extends Command
                      ->get();
         
         
-             foreach ($votings as $vote) {
-                    $rentMovie['movie_id'] = $vote->id;
-                    $rentMovie['dtg'] = Carbon::createFromTime(20, 00, 00, 'Europe/Kiev')->addDays(1);
-                    $rentMovie['status'] = 1;
-                    $rentMovie['hall'] = 1;
+        foreach ($votings as $k => $vote) {
+            $rentMovie['movie_id'] = $vote->id;
+            $rentMovie['dtg'] = Carbon::createFromTime(20, 00, 00, 'Europe/Kiev')->addDays($k);
+//            $rentMovie['dtg'] = Carbon::tomorrow('Europe/Kiev');
+            $rentMovie['status'] = 1;
+            $rentMovie['hall'] = 1;
+            
+            //Adding new movie to rent table
+            Rent::firstOrCreate($rentMovie);
+                    
+            //Here we start process cleaning of table voting
+            Voting::where('movie_id', $vote->id)->delete();
+        }
+             
+             
+        
+        /**
+         *  Method to fill table rents with films
+         *  currently not used.
+         */
 
-                    Rent::firstOrCreate($rentMovie);
-                    
-                    //Here we start process cleaning of table voting
-                    
-//                    dd($vote->id);
-                    //TODO: check isset or empty
-//                    if(!empty($vote->id)){
-                        $clearVotings = Voting::find($vote->id);
-                        var_dump($vote->id);
-                        //TODO: investigate why here null
-                        if(!null($clearVotings)) $clearVotings->delete();                    
-//                    }
-             }
-        
-        
 //        $quantityMovies = Movie::count();
 //        for ($i=1; $i <= $quantityMovies; $i++) {
 //            $dtg = Carbon::createFromTime(20, 00, 00, 'Europe/Kiev')->addDays($i);

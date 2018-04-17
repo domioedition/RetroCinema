@@ -2,7 +2,6 @@
 
 namespace App;
 
-
 class Voting extends Model
 {
     public function mm()

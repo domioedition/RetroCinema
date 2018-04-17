@@ -97,12 +97,24 @@ class FillMovies extends Command
 
             echo $resultFromApi->Response . " -> " . $resultFromApi->Title . " -> " . $resultFromApi->Plot . " -> " . $resultFromApi->Released . " -> " . $resultFromApi->Poster . " -> " . $resultFromApi->imdbRating."\n\n";
 
-            if ($resultFromApi->Response === "False") continue;
-            if ($resultFromApi->Title === 'N/A') continue;
-            if ($resultFromApi->Plot === 'N/A') continue;
-            if ($resultFromApi->Released === 'N/A') continue;
-            if ($resultFromApi->Poster === 'N/A') continue;
-            if ($resultFromApi->imdbRating === 'N/A') continue;
+            if ($resultFromApi->Response === "False") {
+                continue;
+            }
+            if ($resultFromApi->Title === 'N/A') {
+                continue;
+            }
+            if ($resultFromApi->Plot === 'N/A') {
+                continue;
+            }
+            if ($resultFromApi->Released === 'N/A') {
+                continue;
+            }
+            if ($resultFromApi->Poster === 'N/A') {
+                continue;
+            }
+            if ($resultFromApi->imdbRating === 'N/A') {
+                continue;
+            }
 
             $preparedArr['imdb_id'] = $imdbId;
             $preparedArr['title'] = $resultFromApi->Title;
