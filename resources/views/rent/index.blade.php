@@ -4,8 +4,8 @@
 @section('content')
 
     <div class="pricing-header px-3 py-3 pt-md-5 pb-md-4 mx-auto text-center">
-        <h1 class="display-8">Movies at this Theatre</h1>
-        <p class="lead">Just choose your movie and enjoy watching.</p>
+        <h1 class="display-8">Rent movie. Here you could reserve and buy tickets.</h1>
+        <p class="lead">Just choose your movie, buy tickets and enjoy watching.</p>
     </div>
 
     <div class="card-deck mb-3 text-center">

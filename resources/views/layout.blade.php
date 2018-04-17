@@ -28,13 +28,20 @@
 
 
 
-    <div class="container">
+    <div class="container-fluid">
       @yield('content')
 
 
-      @include('layouts.footer')
 
     </div>
+    
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    @include('layouts.footer')
 
 
     <!-- Bootstrap core JavaScript

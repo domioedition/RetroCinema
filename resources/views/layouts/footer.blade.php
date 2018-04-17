@@ -1,14 +1,16 @@
-<footer class="pt-5 my-md-8 pt-md-5 border-top bg-dark">
-  <div class="row">
-    <div class="col-2 col-md">
-      <small class="d-block mb-3 text-muted">&copy; 2017-2018</small>
-    </div>
-    <div class="col-6 col-md">
-      <h5>Project</h5>
-      <ul class="list-unstyled text-small">
-        <li><a class="text-muted" href="/">Movies</a></li>
-        <li><a class="text-muted" href="/posts">Posts</a></li>
-      </ul>
-    </div>
-  </div>
-</footer>
+<section id="footer">
+		<div class="container-fluid bg-dark">
+			<div class="row text-center text-xs-center text-sm-left text-md-left">
+				<div class="col-lg-2">
+                                </div>
+                            <div class="col-lg-4">
+					<h5 class="text-success">Quick links</h5>
+                                        <ul class="list-unstyled quick-links">
+                                            <li><a class="p-2" href="/movies">Movies</a></li>
+                                            <li><a class="p-2" href="/voting">Voting</a></li>
+                                            <li><a class="p-2" href="/posts">Posts</a></li>
+                                        </ul>                                           
+                            </div>
+			</div>
+		</div>
+	</section>

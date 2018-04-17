@@ -4,9 +4,9 @@ namespace App;
 
 class Movie extends Model
 {
-//    public function post()
+//    public function votes()
 //    {
-//        return $this->belongsTo(MovieSession::class);
+//        return $this->belongsTo(Voting::class);
 //    }
 //
 //    public function rents()
