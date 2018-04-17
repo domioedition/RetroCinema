@@ -37,5 +37,5 @@ Route::get('/movies/{id}', 'MovieController@show');
 /**
  *
  */
-Route::get('/voting', 'VotingController@index');
+Route::get('/voting', 'VotingController@index')->name('voting');
 Route::post('/voting', 'VotingController@store');

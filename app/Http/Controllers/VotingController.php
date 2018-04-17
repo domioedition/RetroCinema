@@ -2,22 +2,30 @@
 
 namespace App\Http\Controllers;
 
+use App\Voting;
+use Illuminate\Support\Facades\DB;
+
 class VotingController extends Controller
 {
     public function index()
     {
-        $ip = \Request::ip();
-        dd($ip);
+
+        $voting = DB::table('voting')
+            ->select('movie_id', DB::raw('count(votes) as total'))
+            ->groupBy('movie_id')
+            ->get();
+
+        return view('voting.index', compact('voting'));
     }
 
     public function store()
     {
-//        $this->validate(request(), [
-//            'id_movie' => 'required',
-//        ]);
+        $voting = new Voting();
+        $voting->movie_id = request('movie_id');
+        $voting->votes = 1;
+        $voting->visitor = \Request::ip();
+        $voting->save();
 
-        dd(request());
-
-
+        return redirect('voting');
     }
 }
