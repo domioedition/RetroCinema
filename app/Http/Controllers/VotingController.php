@@ -9,13 +9,13 @@ class VotingController extends Controller
 {
     public function index()
     {
+        $votings = DB::table('votings')
+                     ->select(DB::raw('count(votes) as votes_total, movie_id'))
+                     ->orderBy('votes_total', 'desc')
+                     ->groupBy('movie_id')
+                     ->get();       
 
-        $voting = DB::table('voting')
-            ->select('movie_id', DB::raw('count(votes) as total'))
-            ->groupBy('movie_id')
-            ->get();
-
-        return view('voting.index', compact('voting'));
+        return view('voting.index', compact('votings'));
     }
 
     public function store()
