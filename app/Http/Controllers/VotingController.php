@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Voting;
+use App\System\Models\Voting;
 use Illuminate\Support\Facades\DB;
 
 class VotingController extends Controller

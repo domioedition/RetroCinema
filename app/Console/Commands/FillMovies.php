@@ -4,7 +4,7 @@ namespace App\Console\Commands;
 
 use Illuminate\Console\Command;
 use GuzzleHttp\Client;
-use App\Movie;
+use App\System\Models\Movie;
 
 class FillMovies extends Command
 {
@@ -90,7 +90,7 @@ class FillMovies extends Command
          *
          */
 
-        for ($i = 0; $i < 100; $i++) {
+        for ($i = 0; $i < 1000; $i++) {
             $imdbId = $this->generateRandomIdImdb();
             $res = $client->request('GET', 'http://www.omdbapi.com/?apikey=150f2314&i=' . $imdbId);
             $resultFromApi = json_decode($res->getBody());
@@ -122,15 +122,16 @@ class FillMovies extends Command
             $preparedArr['released'] = $resultFromApi->Released;
             $preparedArr['poster'] = $resultFromApi->Poster;
             $preparedArr['imdb_rating'] = $resultFromApi->imdbRating;
-            Movie::create($preparedArr);
+            $preparedArr['active'] = 1;
+            Movie::firstOrCreate($preparedArr);
         }
     }
 
 
     public function generateRandomIdImdb()
     {
-        $imdbId = 'tt00000';
-        for ($i = 0; $i < 2; $i++) {
+        $imdbId = 'tt0000';
+        for ($i = 0; $i < 3; $i++) {
             $imdbId .= random_int(0, 9);
         }
 

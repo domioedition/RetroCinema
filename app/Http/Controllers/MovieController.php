@@ -2,10 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
-use GuzzleHttp\Exception\GuzzleException;
-use GuzzleHttp\Client;
-use App\Movie;
+use App\System\Models\Movie;
 
 class MovieController extends Controller
 {
@@ -16,7 +13,7 @@ class MovieController extends Controller
      */
     public function index()
     {
-        $movies = Movie::all();
+        $movies = Movie::where('active', 1)->get();
 
         return view('movie.index', compact('movies'));
     }

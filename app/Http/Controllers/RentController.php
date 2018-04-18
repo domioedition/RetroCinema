@@ -3,10 +3,10 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Rent;
-use App\Movie;
+use App\System\Models\Rent;
+use App\System\Models\Movie;
 use Illuminate\Support\Facades\DB;
-use App\Ticket;
+use App\System\Models\Ticket;
 use Ramsey\Uuid\Uuid;
 use Ramsey\Uuid\Exception\UnsatisfiedDependencyException;
 

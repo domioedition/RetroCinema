@@ -39,3 +39,17 @@ Route::get('/movies/{id}', 'MovieController@show');
  */
 Route::get('/voting', 'VotingController@index')->name('voting');
 Route::post('/voting', 'VotingController@store');
+
+/*
+
+1) seeds
+2) movies fill move to command
+3) move to action parameters finding objects by id
+4) PHP DOCS
+5) Validation move to Request object https://laravel.com/docs/5.6/validation#form-request-validation
+6) move all models to separate folder (app/System/Models)
+7) все joins заменить на relations (в select использоыать ->with('airport') там где надо)
+8) all links build only WITH route() facade
+9) Route::resource('surveys', 'SurveysController', ['only' => ['index', 'update', 'destroy']]);
+
+*/

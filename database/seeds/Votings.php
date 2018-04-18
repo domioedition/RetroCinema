@@ -6,7 +6,7 @@ class Votings extends Seeder
 {
     /**
      * Run the database seeds.
-     *
+     * Fill votings table in database
      * @return void
      */
     public function run()

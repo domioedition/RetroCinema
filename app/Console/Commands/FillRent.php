@@ -3,9 +3,9 @@
 namespace App\Console\Commands;
 
 use Illuminate\Console\Command;
-use App\Movie;
-use App\Rent;
-use App\Voting;
+use App\System\Models\Movie;
+use App\System\Models\Rent;
+use App\System\Models\Voting;
 use Illuminate\Support\Facades\DB;
 use Carbon\Carbon;
 
@@ -42,10 +42,7 @@ class FillRent extends Command
      */
     public function handle()
     {
-        
         //here method which calculate votes and create rent movie
-        
-        
         $votings = DB::table('movies')
                     ->join('votings', 'movies.id', '=', 'votings.movie_id')
                      ->select(DB::raw('count(votings.votes) as votes_total, votings.movie_id, movies.*'))
@@ -53,40 +50,22 @@ class FillRent extends Command
                      ->groupBy('votings.movie_id')
                      ->limit(3)
                      ->get();
-        
-        
-        foreach ($votings as $k => $vote) {
-            $rentMovie['movie_id'] = $vote->id;
-            $rentMovie['dtg'] = Carbon::createFromTime(20, 00, 00, 'Europe/Kiev')->addDays($k);
-//            $rentMovie['dtg'] = Carbon::tomorrow('Europe/Kiev');
+
+        $quantityMovies = count($votings);
+        for ($i=0; $i < $quantityMovies; $i++) {
+            $rentMovie['movie_id'] = $votings[$i]->id;
+            $rentMovie['dtg'] = Carbon::createFromTime(20, 00, 00, 'Europe/Kiev')->addDays($i);
             $rentMovie['status'] = 1;
             $rentMovie['hall'] = 1;
-            
+
             //Adding new movie to rent table
             Rent::firstOrCreate($rentMovie);
-                    
-            //Here we start process cleaning of table voting
-            Voting::where('movie_id', $vote->id)->delete();
-        }
-             
-             
-        
-        /**
-         *  Method to fill table rents with films
-         *  currently not used.
-         */
 
-//        $quantityMovies = Movie::count();
-//        for ($i=1; $i <= $quantityMovies; $i++) {
-//            $dtg = Carbon::createFromTime(20, 00, 00, 'Europe/Kiev')->addDays($i);
-//
-//            //TODO: nned to find method for random films
-//            $movie = Movie::find($i);
-//            $rentArr['movie_id'] = $movie->id;
-//            $rentArr['dtg'] = $dtg;
-//            $rentArr['status'] = 1;
-//            $rentArr['hall'] = 1;
-//            $rent = Rent::create($rentArr);
-//        }
+            //Here we start process cleaning of table voting
+            Voting::where('movie_id', $votings[$i]->id)->delete();
+
+            //Changing status film to non active
+            Movie::where('id', $votings[$i]->id)->update(['active' => 0]);
+        }
     }
 }
