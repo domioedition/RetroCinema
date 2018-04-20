@@ -1,5 +1,8 @@
 <?php
 
+
+Route::get('/time', 'MovieTimeController@index');
+
 Route::get('/', 'RentController@index')->name('home');
 Route::get('/rent/{id}', 'RentController@show');
 Route::post('/rent/{id}/buy', 'RentController@buy')->name('buy');

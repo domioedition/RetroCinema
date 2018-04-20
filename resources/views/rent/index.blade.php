@@ -3,35 +3,36 @@
 
 @section('content')
 
-    <div class="pricing-header px-3 py-3 pt-md-5 pb-md-4 mx-auto text-center">
-        <h1 class="display-8">Rent movie. Here you could reserve and buy tickets.</h1>
-        <p class="lead">Just choose your movie, buy tickets and enjoy watching.</p>
+
+    <div class="container">
+
+        <div class="pricing-header px-3 py-3 pt-md-5 pb-md-4 mx-auto text-center">
+            <h1 class="display-8">Rent movie. Here you could reserve and buy tickets.</h1>
+            <p class="lead">Just choose your movie, buy tickets and enjoy watching.</p>
+        </div>
+
+        <div class="card-deck mb-3 text-center">
+            @foreach($movies as $movie)
+
+                <div class="card mb-4 box-shadow">
+                    <div class="card-header">
+                        <h5 class="my-0 font-weight-normal">{{ $movie->title }}</h5>
+                    </div>
+                    <div class="card-body">
+                        <a href="rent/{{ $movie->id }}"><img src="{{ $movie->poster }}" alt="{{ $movie->title }}"
+                                                             class="img-fluid"></a>
+                    </div>
+                    <div class="card-footer bg-white">
+                        <p>{{ $movie->dtg  }}</p>
+                        <p><a class="btn btn-info" href="rent/{{ $movie->id }}"> Buy tickets </a></p>
+                    </div>
+                </div>
+
+            @endforeach
+        </div>
+
+
     </div>
-
-    <div class="card-deck mb-3 text-center">
-        @foreach($movies as $movie)
-
-            <div class="card mb-4 box-shadow">
-                <div class="card-header">
-                    <h4 class="my-0 font-weight-normal"><a href="rent/{{ $movie->id }}">{{ $movie->title }}</a></h4>
-                </div>
-                <div class="card-body">
-                    <a href="rent/{{ $movie->id }}"><img src="{{ $movie->poster }}" alt="{{ $movie->title }}"
-                                                         class="img-fluid"></a>
-                    <h5 class="card-title pricing-card-title">Start: {{ $movie->dtg  }}</h5>
-                </div>
-                <div class="card-footer">
-                    <a href="rent/{{ $movie->id }}">
-                        <button type="button" class="btn btn-lg btn-block btn-outline-primary">Buy ticket</button>
-                    </a>
-                </div>
-            </div>
-
-        @endforeach
-    </div>
-
-
-
 
 
 @endsection

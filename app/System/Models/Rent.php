@@ -23,6 +23,6 @@ class Rent extends Model
      */
     public function movie()
     {
-        return $this->hasOne('App\Movie', 'id', 'movie_id');
+        return $this->hasOne('App\System\Models\Movie', 'id', 'movie_id');
     }
 }
